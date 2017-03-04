@@ -1,0 +1,87 @@
+body {
+    color: green;
+}html, body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Open Sans', serif !important;
+	font-weight:300;
+	-webkit-text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+	background: -webkit-linear-gradient(to left, #F1F2B5 , #235C5F); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to left, #F1F2B5 , #235C5F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.v-center {
+	display:absolute;
+	left:50%;
+	margin: 0 auto;
+	margin-top:30%;
+	text-align:center;
+	color:white;
+	width:50%;
+
+}
+
+.name {
+	font-size:7em;
+	font-weight:bold;
+}
+
+.caption {
+	font-size:1.5em;
+	display:inline;
+}
+
+#locate {
+	margin-top:40px;
+	height:25px;
+	text-align:left;
+}
+
+#locate span {
+	font-size:1.3em;
+}
+
+.input-group {
+	margin-top:15px!important;
+}
+
+#locate input {
+	border:0;
+	height:30px;
+	color:gray;
+}
+
+#locate button {
+	border:0;
+	height:30px;
+
+	background-color:#135058;
+	color:#fff;
+}
+
+#locate button:hover {
+
+}
+
+nav {
+	border-radius:0!important;
+	min-height:20px!important;
+	margin-top:-5px!important;
+	height:45px!important;
+	background-color:#fff;
+	padding-right:30px;
+	border:0!important;
+}
+
+nav a {
+	color:black;
+}
+
+nav a:hover {
+	background-color:transparent!important;
+}
+
+.navbar-collapse.collapse {
+  display: block!important;
+}
