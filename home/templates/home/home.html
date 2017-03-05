@@ -1,27 +1,6 @@
-{% load staticfiles %}
+{% extends 'home/base.html' %}
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'home/style.css' %}" >
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <title>ParkMi</title>
-</head>
-
-
-<body>
-<!-- NAVIGATION -->
-<nav class="navbar">
-    <ul class="nav navbar-nav">
-      <li><a href="#welcome" class="active"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="">Sell</a></li>
-      <li><a href="{% url 'signup' %}">Sign Up</a></li>
-    </ul>
-</nav>
+{% block content %}
 
 <!-- HOMEPAGE -->
       <div class="v-center">
@@ -39,5 +18,5 @@
           </div>
         </form>
       </div>
-</body>
-</html>
+
+{% endblock %}

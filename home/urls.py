@@ -11,4 +11,7 @@ urlpatterns = [
 
     # search for parking spot -- /search/
     url(r'^search/', views.search, name='search'),
+
+   	# sign in page
+   	url(r'^signin/', views.signin, name='signin')
 ]
