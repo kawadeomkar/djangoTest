@@ -21,7 +21,7 @@
         {% if user.is_authenticated %}
           <li><a href="{% url 'sell' %}">Sell</a></li>
           <li><a>Welcome {{ user.username }}!</a></li>
-          <li><a href="{% url 'account' %}">Account Page</a></li>
+          <li><a href="{% url 'account' %}">Your Account</a></li>
         {% else %}
           <li><a href="{% url 'signup' %}">Sell</a></li>
           <li><a href="{% url 'signin' %}">Sign In</a></li>
