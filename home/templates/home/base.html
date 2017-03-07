@@ -18,13 +18,14 @@
         <li><a href="{% url 'home'%}" class="active">ParkMi</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="">Sell</a></li>
-
         {% if user.is_authenticated %}
-        <li>Welcome {{ user.username }}</li>
+          <li><a href="{% url 'sell' %}">Sell</a></li>
+          <li><a>Welcome {{ user.username }}!</a></li>
+          <li><a href="{% url 'account' %}">Account Page</a></li>
         {% else %}
-        <li><a href="{% url 'signin'%}">Sign In</a></li>
-        <li><a href="{% url 'signup' %}">Sign up</a></li>
+          <li><a href="{% url 'signup' %}">Sell</a></li>
+          <li><a href="{% url 'signin' %}">Sign In</a></li>
+          <li><a href="{% url 'signup' %}">Sign up</a></li>
         {% endif %}
 
 

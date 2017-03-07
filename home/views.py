@@ -7,10 +7,19 @@ from .models import ParkingSpot
 from django.urls import reverse
 from django.contrib.auth.models import User
 
+
+def account(request):
+    return render(request, 'home/account.html', {'view': 'account'})
+
+
+def sell(request):
+    return render(request, 'home/sell.html', {'view': 'sell'})
+
+
 def home(request):
     # url = reverse(signup, urlconf=None, args=None, kwargs=None)
     # atHome = True
-    return render(request, 'home/home.html', {'view':'home'})
+    return render(request, 'home/home.html', {'view': 'home'})
 
 
 def signup(request):
@@ -24,9 +33,9 @@ def signup(request):
             return HttpResponseRedirect(reverse(home))
     else:
         form = UserForm()
-    url = reverse(home, urlconf=None, args=None, kwargs=None)
 
-    return render(request, 'home/signup.html', {'form':form, 'url':url, 'link':'Home'})
+    url = reverse(home, urlconf=None, args=None, kwargs=None)
+    return render(request, 'home/signup.html', {'form': form, 'url': url, 'link':'Home'})
 
 def signin(request):
     url = reverse(home, urlconf=None, args=None, kwargs=None)

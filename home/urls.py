@@ -12,6 +12,12 @@ urlpatterns = [
     # search for parking spot -- /search/
     url(r'^search/', views.search, name='search'),
 
-   	# sign in page
-   	url(r'^signin/', views.signin, name='signin')
+    # sign in page
+    url(r'^signin/', views.signin, name='signin'),
+
+    # account page
+    url(r'^account/', views.account, name='account'),
+
+    # selling page
+    url(r'^sell/', views.sell, name='sell')
 ]
