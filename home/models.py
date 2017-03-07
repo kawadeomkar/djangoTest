@@ -12,4 +12,4 @@ class ParkingSpot(models.Model):
     picture = models.FileField(null=True)
 
     def __str__(self):
-        return self.owner
+        return self.title
