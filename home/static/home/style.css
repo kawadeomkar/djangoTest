@@ -9,58 +9,40 @@ html, body {
 	background: linear-gradient(to left, #F1F2B5 , #235C5F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+/* --- general --- */
+
 .v-center {
  	margin: auto;
  	position: absolute;
  	top: 0; left: 0; bottom: 0; right: 0;
- 	height:400px;
-	text-align:center;
 	color:white;
-	width:50%;
-
+	height:400px;
+	text-align:center;
 }
 
-.name {
-	font-size:7em;
-	font-weight:bold;
-}
-
-.caption {
-	font-size:1.5em;
-	display:inline;
-}
-
-#locate {
-	margin-top:40px;
-	height:25px;
-	text-align:left;
-}
-
-#locate span {
-	font-size:1.3em;
+.v-center label {
+	font-weight:100!important;
 }
 
 .input-group {
 	margin-top:15px!important;
 }
 
-#locate input {
-	border:0;
-	height:30px;
-	color:gray;
+.form-group {
+	text-align:left;
 }
 
-#locate button {
-	border:0;
-	height:30px;
-
-	background-color:#135058;
-	color:#fff;
+.submit {
+	margin-top:10px;
+	font-weight:100!important;
+	border:0!important;
 }
 
-#locate button:hover {
-
+.nohover:hover {
+	color:#000!important;
 }
+
+/* --- nav --- */
 
 nav {
 	border-radius:0!important;
@@ -83,3 +65,66 @@ nav a:hover {
 .navbar-collapse.collapse {
   display: block!important;
 }
+
+/* --- home --- */
+
+.home {
+	width:50%;
+}
+
+.name {
+	font-size:7em;
+	font-weight:bold;
+}
+
+.caption {
+	font-size:1.5em;
+	display:inline;
+}
+
+#locate {
+	margin-top:40px;
+	height:25px;
+	text-align:left;
+}
+
+#locate span {
+	font-size:1.3em;
+}
+
+#locate input {
+	border:0;
+	height:30px;
+	color:gray;
+}
+
+#locate button {
+	border:0;
+	height:30px;
+
+	background-color:#135058;
+	color:#fff;
+}
+
+#locate button:hover {
+
+}
+
+/*--- sign in/up ---*/
+
+.sign {
+	margin-top:15px;
+	display:inline-block;
+	width: 400px;
+}
+
+.sign input {
+	width:100%;
+}
+
+.sign label {
+    display:inline-block;
+    text-align:left;
+    margin-right:5px;
+}
+

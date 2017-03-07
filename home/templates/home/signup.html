@@ -1,13 +1,20 @@
 {% extends 'home/base.html' %}
 
 {% block content %}
-  <form action="" method="POST" class="post-form">
-  {% csrf_token %}
 
-    {{ form.as_p }}
-    <button type="submit">Save</button>
-  </form>
+<!-- SIGN UP -->
+
+  <div class="v-center">
+    <h2>Create an Account</h2>
+
+    <form action="{% url 'signup' %}" method="POST" class="sign">
+      {% csrf_token %}
+      <div class="form-group">
+        {{ form.as_p }}
+        <button class="btn btn-default submit" type="submit">Sign up</button>
+      </div>
+    </form>
+
+  </div>
 
 {% endblock %}
-
-<!-- comment -->

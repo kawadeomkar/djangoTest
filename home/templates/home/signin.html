@@ -1,1 +1,24 @@
 {% extends 'home/base.html' %}
+
+{% block content %}
+
+<!-- SIGN IN -->
+
+	<div class="v-center">
+		<h2>Welcome back!</h2>
+
+		<form action="{% url 'signin' %}" method="POST" class="sign">
+		{% csrf_token %}
+		<div class="form-group">
+			<p><label for="username">Username:</label>
+			<input type="text" class="form-control" placeholder="Your username" name="username" id="username" required></p>
+
+			<p><label for="password">Password:</label>
+			<input type="password" class="form-control" placeholder="Your password" name="password" id="password" required></p>
+
+			<button class="btn btn-default submit" type="submit">Sign in</button>
+		</div>
+		</form>
+
+	</div>
+{% endblock %}

@@ -19,13 +19,18 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         {% if user.is_authenticated %}
+
+          <li><a class="nohover">Welcome, {{ user.username }}!</a></li>
           <li><a href="{% url 'sell' %}">Sell</a></li>
-          <li><a>Welcome {{ user.username }}!</a></li>
           <li><a href="{% url 'account' %}">Your Account</a></li>
+          <li><a href="{% url 'log_out' %}">Log out</a>
+
         {% else %}
+
           <li><a href="{% url 'signup' %}">Sell</a></li>
           <li><a href="{% url 'signin' %}">Sign In</a></li>
           <li><a href="{% url 'signup' %}">Sign up</a></li>
+
         {% endif %}
 
 
@@ -34,5 +39,6 @@
 
   {% block content %}
   {% endblock %}
+  
 </body>
 </html>

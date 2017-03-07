@@ -1,12 +1,11 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import SearchForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from .forms import UserForm
 from .models import ParkingSpot
 from django.urls import reverse
 from django.contrib.auth.models import User
-
 
 def account(request):
     return render(request, 'home/account.html', {'view': 'account'})
@@ -37,19 +36,34 @@ def signup(request):
     url = reverse(home, urlconf=None, args=None, kwargs=None)
     return render(request, 'home/signup.html', {'form': form, 'url': url, 'link':'Home'})
 
-def signin(request):
-    url = reverse(home, urlconf=None, args=None, kwargs=None)
-    return render(request, 'home/signin.html', {'url':url, 'link':'Home'})
 
+def signin(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect(reverse(home))
+        else:
+            return HttpResponse("error")
+    return render(request, 'home/signin.html', {})
+
+    # url = reverse(home, urlconf=None, args=None, kwargs=None)
+    # return render(request, 'home/signin.html', {'url':url, 'link':'Home'})
+
+def log_out(request):
+    logout(request)
+    return HttpResponseRedirect(reverse(home))
 
 def search(request):
     spots = ParkingSpot.objects.all()
     city = request.GET['city']
     spots = spots.filter(city__icontains=city)
     if spots:
-        response = "spots in " + city + ":<br>" + '<br>'.join([str(i) for i in spots])
+        response = "spots in " + city + ":<br>" + '<br>'.join([str(i) for i in spots]) + "<p><a href=\"/\">back</a></p>"
     else:
-        response = "no spots found sorry!!"
+        response = "no spots found in city " + city + ", sorry!!<p><a href=\"/\">back</a></p>"
     return HttpResponse(response)
 
     # if request.method == "POST":

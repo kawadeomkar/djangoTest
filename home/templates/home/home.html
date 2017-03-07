@@ -3,20 +3,22 @@
 {% block content %}
 
 <!-- HOMEPAGE -->
-      <div class="v-center">
+      <div class="v-center home">
         <span class="name anim">ParkMi</span>
         <br>
         <span class="caption">Find parking anywhere, anytime.</span>
         <br>
+
         <form action="{% url 'search' %}" method="GET" id="locate">
         <span>Where are you headed?<br></span>
           <div class="input-group">
              <input type="text" class="form-control" placeholder="Your destination!" name="city" required>
              <span class="input-group-btn">
-                  <button class="btn btn-default" type="button">Go!</button>
+                  <button class="btn btn-default" type="submit">Go!</button>
              </span>
           </div>
         </form>
+        
       </div>
 
 {% endblock %}
