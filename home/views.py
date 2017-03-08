@@ -63,7 +63,7 @@ def search(request):
     if spots:
         response = "spots in " + city + ":<br>" + '<br>'.join([str(i) for i in spots]) + "<p><a href=\"/\">back</a></p>"
     else:
-        response = "no spots found in city " + city + ", sorry!!<p><a href=\"/\">back</a></p>"
+        response = "no spots found in city " + city + ", sorry :c<p><a href=\"/\">back</a></p>"
     return HttpResponse(response)
 
     # if request.method == "POST":
