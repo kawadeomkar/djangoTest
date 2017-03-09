@@ -1,23 +1,23 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from .forms import SearchForm
 from django.contrib.auth import authenticate, login, logout
-from .forms import UserForm
-from .models import ParkingSpot
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from django.views.generic.detail import DetailView
+from .forms import UserForm, SearchForm
+from .models import ParkingSpot
 from django.contrib.auth.models import User
+
 
 def account(request):
     return render(request, 'home/account.html', {'view': 'account'})
 
-
+@login_required
 def sell(request):
     return render(request, 'home/sell.html', {'view': 'sell'})
 
 
 def home(request):
-    # url = reverse(signup, urlconf=None, args=None, kwargs=None)
-    # atHome = True
     return render(request, 'home/home.html', {'view': 'home'})
 
 
@@ -41,10 +41,13 @@ def signin(request):
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
+        next_page = request.POST['next']
+        if next_page == "":
+            next_page = reverse(home)
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect(reverse(home))
+            return HttpResponseRedirect(next_page)
         else:
             return HttpResponse("error")
     return render(request, 'home/signin.html', {})
@@ -66,19 +69,29 @@ def search(request):
         response = "no spots found in city " + city + ", sorry :c<p><a href=\"/\">back</a></p>"
     return HttpResponse(response)
 
-    # if request.method == "POST":
-    #     form = QuestionChoiceForm(request.POST)
-    #     if form.is_valid():
-    #         question = form.save(commit=False)
-    #         question.pub_date = timezone.now()
-    #         question.save()
-    #         question.choice_set.create(choice_text=form.cleaned_data['c1'], votes=0).save()
-    #         question.choice_set.create(choice_text=form.cleaned_data['c2'], votes=0).save()
-    #         if form.cleaned_data['c3'] != "":
-    #             question.choice_set.create(choice_text=form.cleaned_data['c3'], votes=0).save()
-    #         if form.cleaned_data['c4'] != "":
-    #             question.choice_set.create(choice_text=form.cleaned_data['c4'], votes=0).save()
-    #         return HttpResponseRedirect(reverse('polls:index'))
-    # else:
-    #     form = QuestionChoiceForm()
-    # return render(request, 'polls/create.html', {'form':form})
+
+
+
+#### redirect if not authenticated:
+# def my_view(request):
+#     if not request.user.is_authenticated:
+#         return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
+#     # ...
+
+### POST form syntax
+# if request.method == "POST":
+#     form = QuestionChoiceForm(request.POST)
+#     if form.is_valid():
+#         question = form.save(commit=False)
+#         question.pub_date = timezone.now()
+#         question.save()
+#         question.choice_set.create(choice_text=form.cleaned_data['c1'], votes=0).save()
+#         question.choice_set.create(choice_text=form.cleaned_data['c2'], votes=0).save()
+#         if form.cleaned_data['c3'] != "":
+#             question.choice_set.create(choice_text=form.cleaned_data['c3'], votes=0).save()
+#         if form.cleaned_data['c4'] != "":
+#             question.choice_set.create(choice_text=form.cleaned_data['c4'], votes=0).save()
+#         return HttpResponseRedirect(reverse('polls:index'))
+# else:
+#     form = QuestionChoiceForm()
+# return render(request, 'polls/create.html', {'form':form})

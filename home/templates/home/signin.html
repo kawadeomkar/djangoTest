@@ -6,7 +6,6 @@
 
 	<div class="v-center">
 		<h2>Welcome back!</h2>
-
 		<form action="{% url 'signin' %}" method="POST" class="sign">
 		{% csrf_token %}
 		<div class="form-group">
@@ -15,6 +14,8 @@
 
 			<p><label for="password">Password:</label>
 			<input type="password" class="form-control" placeholder="Your password" name="password" id="password" required></p>
+
+			<input type="hidden" name="next" value="{{request.GET.next}}">
 
 			<button class="btn btn-default submit" type="submit">Sign in</button>
 		</div>

@@ -12,21 +12,24 @@ class UserForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(UserForm, self).__init__(*args, **kwargs)
 
-        self.fields['username'].widget.attrs.update({
+        for key in self.fields:
+        	self.fields[key].widget.attrs.update({
             'class': 'form-control'
         })
-        self.fields['email'].widget.attrs.update({
-            'class': 'form-control'
-        })
-        self.fields['password'].widget.attrs.update({
-            'class': 'form-control'
-            
-        })
+
+      	# self.fields['first_name'].widget.attrs.update({
+      	# 	'class': 'form-control mini'
+      	# 	})
+
+      	# self.fields['last_name'].widget.attrs.update({
+      	# 	'class': 'form-control mini'
+      	# 	})
+        
 
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password']
+        fields = ['first_name', 'last_name', 'username', 'email', 'password']
         help_texts = {
             'username': None,
         }

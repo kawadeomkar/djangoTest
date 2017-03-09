@@ -11,6 +11,10 @@ html, body {
 
 /* --- general --- */
 
+/*.mini {
+	width:45%!important;
+}*/
+
 .v-center {
  	margin: auto;
  	position: absolute;
