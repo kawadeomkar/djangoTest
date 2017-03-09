@@ -25,8 +25,6 @@ class UserForm(forms.ModelForm):
       	# 	'class': 'form-control mini'
       	# 	})
         
-
-
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'username', 'email', 'password']

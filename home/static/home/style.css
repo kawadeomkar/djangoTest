@@ -15,6 +15,23 @@ html, body {
 	width:45%!important;
 }*/
 
+.edit input {
+	color: #000;
+}
+
+.edit {
+	margin-top:0!important;
+	text-align:left;
+}
+
+.edit label {
+	font-weight:700!important;
+}
+
+.med {
+	font-weight:normal;
+}
+
 .v-center {
  	margin: auto;
  	position: absolute;
@@ -72,9 +89,14 @@ nav a:hover {
 
 /* --- home --- */
 
-.home {
+.w {
 	width:50%;
 }
+
+.w p {
+	margin-top:20px
+}
+
 
 .name {
 	font-size:7em;
@@ -93,7 +115,7 @@ nav a:hover {
 }
 
 #locate span {
-	font-size:1.3em;
+	font-size:1.2em;
 }
 
 #locate input {

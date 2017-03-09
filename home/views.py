@@ -4,23 +4,38 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import UpdateView
 from .forms import UserForm, SearchForm
 from .models import ParkingSpot
 from django.contrib.auth.models import User
 
 
-def account(request):
-    return render(request, 'home/account.html', {'view': 'account'})
+# need to add: bootstrap styling
+class UserDetail(UpdateView):
+    model = User
+    fields = ['first_name', 'last_name', 'username']
+    template_name = 'home/account.html'
+    success_url = '/account?success=true'
 
-@login_required
-def sell(request):
-    return render(request, 'home/sell.html', {'view': 'sell'})
+    def get_object(self):
+        return self.request.user
+
+    def __init__(self, *args, **kwargs):
+        super(UserDetail, self).__init__(*args, **kwargs)
+        for field in self.fields:
+            print field
 
 
 def home(request):
-    return render(request, 'home/home.html', {'view': 'home'})
+    return render(request, 'home/home.html', {})
 
 
+@login_required
+def sell(request):
+    return render(request, 'home/sell.html', {})
+
+
+# figure out how to make name inputs inline
 def signup(request):
     if request.method == "POST":
         form = UserForm(request.POST)
@@ -34,7 +49,7 @@ def signup(request):
         form = UserForm()
 
     url = reverse(home, urlconf=None, args=None, kwargs=None)
-    return render(request, 'home/signup.html', {'form': form, 'url': url, 'link':'Home'})
+    return render(request, 'home/signup.html', {'form': form})
 
 
 def signin(request):
@@ -52,12 +67,11 @@ def signin(request):
             return HttpResponse("error")
     return render(request, 'home/signin.html', {})
 
-    # url = reverse(home, urlconf=None, args=None, kwargs=None)
-    # return render(request, 'home/signin.html', {'url':url, 'link':'Home'})
 
 def log_out(request):
     logout(request)
     return HttpResponseRedirect(reverse(home))
+
 
 def search(request):
     spots = ParkingSpot.objects.all()
@@ -69,14 +83,6 @@ def search(request):
         response = "no spots found in city " + city + ", sorry :c<p><a href=\"/\">back</a></p>"
     return HttpResponse(response)
 
-
-
-
-#### redirect if not authenticated:
-# def my_view(request):
-#     if not request.user.is_authenticated:
-#         return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
-#     # ...
 
 ### POST form syntax
 # if request.method == "POST":

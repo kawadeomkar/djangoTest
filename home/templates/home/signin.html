@@ -5,9 +5,13 @@
 <!-- SIGN IN -->
 
 	<div class="v-center">
-		<h2>Welcome back!</h2>
+		<h2>Sign in</h2>
 		<form action="{% url 'signin' %}" method="POST" class="sign">
 		{% csrf_token %}
+
+		{% if request.GET.next %}
+			<p>Please sign in first.</p>
+		{% endif %}
 		<div class="form-group">
 			<p><label for="username">Username:</label>
 			<input type="text" class="form-control" placeholder="Your username" name="username" id="username" required></p>

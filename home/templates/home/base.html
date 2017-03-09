@@ -18,12 +18,12 @@
         <li><a href="{% url 'home'%}" class="active">ParkMi</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+
           <li><a href="{% url 'sell' %}">Sell</a></li>
 
         {% if user.is_authenticated %}
 
-          <!-- <li><a class="nohover">Welcome, {{ user.username }}!</a></li> -->
-          <li><a href="{% url 'account' %}">Your Account</a></li>
+          <li><a href="{% url 'account' %}">Account</a></li>
           <li><a href="{% url 'log_out' %}">Log out</a>
 
         {% else %}
@@ -31,7 +31,6 @@
           <li><a href="{% url 'signup' %}">Sign up</a></li>
 
         {% endif %}
-
 
       </ul>
   </nav>
