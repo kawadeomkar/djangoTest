@@ -1,0 +1,17 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+
+	<div style="text-align:left">	<!-- temporarily unclassed -->
+		<h2>Spots in {{ request.GET.city|title }}</h2>
+		{% for spot in foundspots %}
+			<strong>{{ spot.title }}</strong><br>
+			Address:<br>
+			{{ spot.street }}<br>
+			{{ spot.city }}, {{spot.state}} {{spot.zipcode}}
+		{% empty %}
+		Sorry, no spots found.
+		{% endfor %}
+	</div>
+	
+{% endblock %}

@@ -2,23 +2,16 @@
 
 {% block content %}
 
-<!-- SIGN UP -->
+<!-- SIGN IN -->
 
-  <div class="v-center small">
-    <h2>Create an Account</h2>
+	<div>	<!-- temporarily unclassed -->
+		<h2>Create an Account</h2>
+		<form action="{% url 'signin' %}" method="POST" class="sign">
+		{% csrf_token %}
+			<div class="form-group">
+				{{ form.as_p }}
+				<button class="btn btn-default submit" type="submit">Sign in</button>
+			</div>
 
-    <form action="{% url 'signup' %}" method="POST" class="sign">
-      {% csrf_token %}
-      <div class="form-group">
-        {{ form.as_p }}
-        <!--{% for field in form %}
-          {{ field.errors }}
-          {{ field.label_tag }} {{ field }}
-        {% endfor %} -->
-        <button class="btn btn-default submit" type="submit">Sign up</button>
-      </div>
-    </form>
-
-  </div>
-
+	</div>
 {% endblock %}

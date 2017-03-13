@@ -3,8 +3,8 @@
 {% block content %}
 
 <!-- SIGN IN -->
+	<div style="height:400px;">	<!-- temporarily unclassed -->
 
-	<div class="v-center small">
 		<h2>Sign in</h2>
 		<form action="{% url 'signin' %}" method="POST" class="sign">
 		{% csrf_token %}

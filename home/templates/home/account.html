@@ -2,25 +2,26 @@
 
 {% block content %}
 
-  <div class="v-center w">
- 	<h2>Your Account</h2>
 
- 	{% if request.GET.success %}
- 		<p><span class="med">Your changes have been saved.</span></p>
- 	{% endif %}
- 	
-  	<form method="POST" class="sign edit">
-	{% csrf_token %}
+ 	<div>	<!-- temporarily unclassed -->
+	 	<h2>Your Account</h2>
 
-		<p>Email: <strong> {{ object.email }} </strong></p>
+	 	{% if request.GET.success %}
+	 		<p><span class="med">Your changes have been saved.</span></p>
+	 	{% endif %}
+	 	
+	  	<form method="POST" class="sign edit">
+		{% csrf_token %}
 
-	    <div class="form-group">
+			<p>Email: <strong> {{ object.email }} </strong></p>
 
-	  		{{ form.as_p }}
+		    <div class="form-group">
 
-	  		<button class="btn btn-default submit" type="submit">Update</button>
-	  	</div>
-  	</form>
+		  		{{ form.as_p }}
+
+		  		<button class="btn btn-default submit" type="submit">Update</button>
+		  	</div>
+	  	</form>
   </div>
 
 {% endblock %}

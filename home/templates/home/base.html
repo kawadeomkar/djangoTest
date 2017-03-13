@@ -1,6 +1,7 @@
 {% load staticfiles %}
 
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,8 +11,9 @@
     <title>ParkMi</title>
 </head>
 
-
 <body>
+
+
 <!-- NAVIGATION -->
   <nav class="navbar">
       <ul class="nav navbar-nav">
@@ -34,10 +36,17 @@
 
       </ul>
   </nav>
+
+
+<!-- main content (will be vertically & horizontally centered w flexbox)
+ --> 
   <div class="main">
     {% block content %}
     {% endblock %}
   </div>
+
+
+<!-- footer (temp?) -->
   <div class="footer">
     <span class="l"><a href="{% url 'about' %}">
       Learn More
@@ -50,5 +59,7 @@
     </span>
   </div>
 
+
 </body>
+
 </html>
