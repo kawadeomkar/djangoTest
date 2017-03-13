@@ -3,6 +3,8 @@
 {% block content %}
 
 <!-- HOMEPAGE -->
+
+      <!-- Title and Search Bar -->
       <div class="v-center w">
         <span class="name anim">ParkMi</span>
         <br>
@@ -18,7 +20,13 @@
              </span>
           </div>
         </form>
+      </div>
 
+     <!-- About button -->
+      <div class="about-button">
+          <a href="{% url 'about' %}">
+            <button type="submit">Learn More</button>
+          </a>
       </div>
 
 {% endblock %}

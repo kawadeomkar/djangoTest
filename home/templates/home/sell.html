@@ -3,5 +3,9 @@
 {% block content %}
 
   <div class="v-center">sell ur spots here!!</div>
+
+  {% for parkingspot in object_list %}
+    <h1>{{ parkingspot.title }}</h1>
+  {% endfor %}
   
 {% endblock %}

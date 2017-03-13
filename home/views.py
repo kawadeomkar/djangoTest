@@ -4,10 +4,12 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
 from django.views.generic.edit import UpdateView
 from .forms import UserForm, SearchForm
 from .models import ParkingSpot
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 
 # need to add: bootstrap styling
@@ -23,7 +25,8 @@ class UserDetail(UpdateView):
     def __init__(self, *args, **kwargs):
         super(UserDetail, self).__init__(*args, **kwargs)
         for field in self.fields:
-            print field
+            print(field)
+
 
 def about(request):
     return render(request, 'home/about.html', {})
@@ -76,6 +79,18 @@ def log_out(request):
     return HttpResponseRedirect(reverse(home))
 
 
+class SearchView(ListView):
+    model = ParkingSpot
+
+    def get_context_data(self, **kwargs):
+        context = super(SearchView, self).get_context_data(**kwargs)
+        context['now'] = timezone.now()
+        context['city'] = self.request.GET.get('city')
+
+    def get_queryset(self):
+        return ParkingSpot.objects.filter()
+
+"""
 def search(request):
     spots = ParkingSpot.objects.all()
     city = request.GET['city']
@@ -86,6 +101,7 @@ def search(request):
         response = "no spots found in city " + city + ", sorry :c<p><a href=\"/\">back</a></p>"
     return HttpResponse(response)
 
+"""
 
 ### POST form syntax
 # if request.method == "POST":
