@@ -11,14 +11,21 @@ html, body {
 
 /* --- general --- */
 
-.main, .footer {
-	display:block;
+/* main wrapper, uses flex */
+.main {
+	width:100%;
+	text-align:center;
+	padding-bottom:75px;
+	margin-bottom: -45px; /*for footer*/
+	min-height:100%;
+	color:white;
+ 	display: flex;
+ 	flex-direction: column;
+ 	justify-content: center; /*vertically centers*/
+ 	align-items:center;
 }
 
-.main {
-	margin-bottom: -45px;
-	min-height: 100%;
-}
+/* .edit is a dumb hack bc idk how to use mixins :)*/
 
 .edit input {
 	color: #000;
@@ -33,33 +40,10 @@ html, body {
 	font-weight:700!important;
 }
 
-.med {
+/* ------- */
+
+.med { /*another hack*/
 	font-weight:normal;
-}
-
-/*-- horizontally centers --*/
-.v-center {
- 	left: 0; right: 0;
-	color:white;
-	text-align:center;
-	padding-top:50px;
-	padding-bottom:100px;
-
-}
-
-.v-center label {
-	font-weight:100!important;
-}
-
-/*-- gives height, on top of v-center (usually) --*/
-
-.small {
- 	margin: auto;
- 	position:absolute;
- 	display:block;
- 	top: 0; left: 0; bottom: 0; right: 0;
-	height:400px;
-	text-align:center;
 }
 
 .input-group {
@@ -82,7 +66,9 @@ html, body {
 
 /* --- nav --- */
 
+/*figure out how to de-important this*/
 nav {
+	margin-bottom:0!important;
 	border-radius:0!important;
 	min-height:20px!important;
 	margin-top:-5px!important;
@@ -108,32 +94,32 @@ nav a:hover, .footer a:hover {
 
 /* --- home --- */
 
-.w {
+.home {
+	height:400px;
 	width:50%;
 }
 
-.w p {
+.home p {
 	margin-top:20px
 }
 
-
-.name {
+.name { /* "ParkMi" */
 	font-size:7em;
 	font-weight:bold;
 }
 
-.caption {
+.caption { /* "Find parking anywhere, anytime."" */
 	font-size:1.5em;
 	display:inline;
 }
 
-#locate {
+#locate { /* contains search bar and span */
 	margin-top:40px;
 	height:25px;
 	text-align:left;
 }
 
-#locate span {
+#locate span { /* "Where are you headed?" */
 	font-size:1.2em;
 }
 
@@ -196,5 +182,7 @@ nav a:hover, .footer a:hover {
     display:inline-block;
     text-align:left;
     margin-right:5px;
+    font-weight:100!important;
+
 }
 

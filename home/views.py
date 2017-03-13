@@ -83,12 +83,11 @@ class SearchView(ListView):
     model = ParkingSpot
     template_name = 'home/search.html'
 
-    def get_context_data(self, **kwargs):
-        context = super(SearchView, self).get_context_data(**kwargs)
-        context['city'] = self.request.GET.get('city')
+    context_object_name = 'foundspots'
 
     def get_queryset(self):
-        return ParkingSpot.objects.filter()
+        print ParkingSpot.objects.filter(city__icontains=self.request.GET.get('city'))
+        return ParkingSpot.objects.filter(city__icontains=self.request.GET.get('city'))
 
 """
 def search(request):
