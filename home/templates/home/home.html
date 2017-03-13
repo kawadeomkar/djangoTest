@@ -5,7 +5,7 @@
 <!-- HOMEPAGE -->
 
       <!-- Title and Search Bar -->
-      <div class="v-center w">
+      <div class="v-center small w">
         <span class="name anim">ParkMi</span>
         <br>
         <span class="caption">Find parking anywhere, anytime.</span>
@@ -14,19 +14,12 @@
         <form action="{% url 'search' %}" method="GET" id="locate">
         <span>Where are you headed?<br></span>
           <div class="input-group">
-             <input type="text" class="form-control" placeholder="Your destination!" name="city" required>
+             <input type="text" class="form-control" placeholder="Your destination!" name="city" require>
              <span class="input-group-btn">
                   <button class="btn btn-default" type="submit">Go!</button>
              </span>
           </div>
         </form>
-      </div>
-
-     <!-- About button -->
-      <div class="about-button">
-          <a href="{% url 'about' %}">
-            <button type="submit">Learn More</button>
-          </a>
       </div>
 
 {% endblock %}

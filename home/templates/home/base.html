@@ -34,9 +34,21 @@
 
       </ul>
   </nav>
-
-  {% block content %}
-  {% endblock %}
+  <div class="main">
+    {% block content %}
+    {% endblock %}
+  </div>
+  <div class="footer">
+    <span class="l"><a href="{% url 'about' %}">
+      Learn More
+    </a></span>
+    <span class="l"><a href="">
+      Contact Us
+    </a></span>
+    <span class="r">
+      &copy; 2017 ParkMi
+    </span>
+  </div>
 
 </body>
 </html>

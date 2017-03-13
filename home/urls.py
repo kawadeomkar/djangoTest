@@ -21,7 +21,7 @@ urlpatterns = [
     url(r'^account/', views.UserDetail.as_view(), name='account'),
 
     # selling page
-    url(r'^sell/', ListView.as_view(queryset=ParkingSpot.objects.all()), name='sell'),
+    url(r'^sell/', views.sell, name='sell'),
 
     # log out
     url(r'^log_out/', views.log_out, name='log_out'),

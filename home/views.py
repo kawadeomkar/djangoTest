@@ -81,10 +81,10 @@ def log_out(request):
 
 class SearchView(ListView):
     model = ParkingSpot
+    template_name = 'home/search.html'
 
     def get_context_data(self, **kwargs):
         context = super(SearchView, self).get_context_data(**kwargs)
-        context['now'] = timezone.now()
         context['city'] = self.request.GET.get('city')
 
     def get_queryset(self):
