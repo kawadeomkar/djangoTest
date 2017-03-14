@@ -25,6 +25,11 @@ html, body {
  	align-items:center;
 }
 
+.main a {
+	font-weight:bold!important;
+	color:#fff;
+}
+
 /* .edit is a dumb hack bc idk how to use mixins :)*/
 
 .edit input {
