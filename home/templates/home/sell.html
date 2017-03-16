@@ -2,6 +2,15 @@
 
 {% block content %}
 
-  sell ur spots here!!
-  
+	<div>	<!-- temporarily unclassed -->
+		<h2>Sell a Spot</h2>
+		<form action="{% url 'sell' %}" method="POST" class="sign">
+		{% csrf_token %}
+			<div class="form-group">
+				{{ form.as_p }}
+				<button class="btn btn-default submit" type="submit">Submit</button>
+			</div>
+
+	</div>
+
 {% endblock %}

@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from .models import ParkingSpot
 from django import forms
 
 
@@ -33,5 +34,18 @@ class UserForm(forms.ModelForm):
         }
 
 
+class ParkingSpotForm(forms.ModelForm):
+	class Meta:
+		model = ParkingSpot
+		fields = ['title', 'street', 'city', 'state', 'zipcode', 'price', 'picture', 'description']
 
-        
+	def __init__(self, *args, **kwargs):
+		super(ParkingSpotForm, self).__init__(*args, **kwargs)
+
+		for key in self.fields:
+			if key is not 'picture':
+				self.fields[key].widget.attrs.update({
+					'class': 'form-control'
+					})
+
+

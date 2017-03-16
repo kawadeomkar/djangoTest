@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import UpdateView
-from .forms import UserForm, SearchForm
+from .forms import UserForm, SearchForm, ParkingSpotForm
 from .models import ParkingSpot
 from django.contrib.auth.models import User
 from django.utils import timezone
@@ -18,7 +18,7 @@ class UserDetail(UpdateView):
     fields = ['first_name', 'last_name', 'username']
     template_name = 'home/account.html'
     success_url = '/account?success=true'
-
+    
     def get_object(self):
         return self.request.user
 
@@ -38,7 +38,20 @@ def home(request):
 
 @login_required
 def sell(request):
-    return render(request, 'home/sell.html', {})
+    if request.method == "POST":
+        form = ParkingSpotForm(request.POST)
+        if form.is_valid():
+            spot = form.save(commit=False)
+            spot.owner = request.user
+            spot.save()
+
+            # to do: make success page
+            return HttpResponseRedirect(reverse('home'))
+    else:
+        form = ParkingSpotForm()
+
+    return render(request, 'home/sell.html', {'form':form})
+
 
 
 # figure out how to make name inputs inline
@@ -88,6 +101,24 @@ class SearchView(ListView):
     def get_queryset(self):
         print ParkingSpot.objects.filter(city__icontains=self.request.GET.get('city'))
         return ParkingSpot.objects.filter(city__icontains=self.request.GET.get('city'))
+
+# def create(request):
+#     if request.method == "POST":
+#         form = QuestionChoiceForm(request.POST)
+#         if form.is_valid():
+#             question = form.save(commit=False)
+#             question.pub_date = timezone.now()
+#             question.save()
+#             question.choice_set.create(choice_text=form.cleaned_data['c1'], votes=0).save()
+#             question.choice_set.create(choice_text=form.cleaned_data['c2'], votes=0).save()
+#             if form.cleaned_data['c3'] != "":
+#                 question.choice_set.create(choice_text=form.cleaned_data['c3'], votes=0).save()
+#             if form.cleaned_data['c4'] != "":
+#                 question.choice_set.create(choice_text=form.cleaned_data['c4'], votes=0).save()
+#             return HttpResponseRedirect(reverse('polls:index'))
+#     else:
+#         form = QuestionChoiceForm()
+#     return render(request, 'polls/create.html', {'form':form})
 
 """
 def search(request):
