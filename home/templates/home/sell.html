@@ -2,7 +2,7 @@
 
 {% block content %}
 
-	<div>	<!-- temporarily unclassed -->
+	<div style="margin-top:50px;margin-bottom:50px;">	<!-- temporarily unclassed -->
 		<h2>Sell a Spot</h2>
 		<form action="{% url 'sell' %}" method="POST" class="sign">
 		{% csrf_token %}
